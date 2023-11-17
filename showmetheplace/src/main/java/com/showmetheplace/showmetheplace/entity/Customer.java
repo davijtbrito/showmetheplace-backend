@@ -1,5 +1,7 @@
 package com.showmetheplace.showmetheplace.entity;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -16,7 +18,11 @@ public class Customer extends Person{
 
     public Customer(String name, String email, String phone, boolean allowTip) {
         super(name, email, phone);
-        this.allowTip = allowTip;
-    }
-    
+
+        this.id = null;
+        this.allowTip = allowTip;        
+        this.active = true;
+        this.dateCreated = LocalDateTime.now();
+        this.dateUpdated = LocalDateTime.now();        
+    }    
 }

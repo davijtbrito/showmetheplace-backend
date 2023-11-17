@@ -1,5 +1,7 @@
 package com.showmetheplace.showmetheplace.entity;
 
+import java.time.LocalDateTime;
+
 import com.showmetheplace.showmetheplace.design.Location;
 
 import jakarta.persistence.Entity;
@@ -21,6 +23,12 @@ public class Helper extends Person implements Location {
 
     public Helper(String name, String email, String phone, boolean callAtNight, String country, String city) {
         super(name, email, phone);
+        
+        this.id = null;        
+        this.active = true;
+        this.dateCreated = LocalDateTime.now();
+        this.dateUpdated = LocalDateTime.now();   
+
         this.callAtNight = callAtNight;
         this.country = country;
         this.city = city;
