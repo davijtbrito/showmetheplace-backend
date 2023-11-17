@@ -8,13 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
-@AllArgsConstructor
 @MappedSuperclass
 public abstract class BaseEntity implements EntityAbstract{
 
@@ -22,7 +18,7 @@ public abstract class BaseEntity implements EntityAbstract{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
 
-    protected Boolean active;// this metadata should be seeing only in database context
+    protected boolean active;// this metadata should be seeing only in database context
     protected LocalDateTime dateCreated;// this metadata should be seeing only in database context
     protected LocalDateTime dateUpdated;// this metadata should be seeing only in database context
 }

@@ -20,9 +20,7 @@ public class Place extends BaseEntity implements Location{
     private String country;
     private String city;
     public Place(Long id, Boolean active, LocalDateTime dateCreated, LocalDateTime dateUpdated, String country,
-            String city) {
-                
-        super(null, true, LocalDateTime.now(), LocalDateTime.now());        
+            String city) {                            
 
         this.country = country;
         this.city = city;
