@@ -1,11 +1,11 @@
 package com.showmetheplace.showmetheplace.service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.showmetheplace.showmetheplace.design.Crud;
@@ -17,7 +17,7 @@ import com.showmetheplace.showmetheplace.repository.CustomerRepository;
 
 @Service
 public class CustomerService implements Crud {
-
+    
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -35,13 +35,13 @@ public class CustomerService implements Crud {
     }
 
     @Override
-    public DtoAbstract update(Long idEntity, DtoAbstract dto) {        
-
-        Optional<Customer> customer = this.customerRepository.findById(idEntity);
+    public DtoAbstract update(DtoAbstract dto) {        
 
         CustomerDto customerDto = (CustomerDto) dto;
 
-        this.customerRepository.save(new Customer(idEntity,
+        Optional<Customer> customer = this.customerRepository.findById(customerDto.getId());
+
+        this.customerRepository.save(new Customer(customerDto.getId(),
                     customerDto.getName(),
                     customerDto.getEmail(),
                     customerDto.getPhone(),
@@ -75,11 +75,11 @@ public class CustomerService implements Crud {
     }
 
     @Override
-    public List<DtoAbstract> getAll() {
+    public Page<DtoAbstract> getAll(Pageable pageable) {
 
-        List<DtoAbstract> dtos = new ArrayList<DtoAbstract>();
+        Page<Customer> customerPage = this.customerRepository.findAll(pageable);
 
-        this.customerRepository.findAll().stream().forEach(c -> {
+        return customerPage.map(c -> {
             CustomerDto dto = new CustomerDto();
             dto.setId(c.getId());
             dto.setName(c.getName());
@@ -87,10 +87,8 @@ public class CustomerService implements Crud {
             dto.setPhone(c.getPhone());
             dto.setAllowTip(c.isAllowTip());
 
-            dtos.add(dto);
-        });
-
-        return dtos;
+            return dto;
+        });        
     }
 
 }

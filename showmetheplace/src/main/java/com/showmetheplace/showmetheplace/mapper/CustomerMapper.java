@@ -1,11 +1,14 @@
 package com.showmetheplace.showmetheplace.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.showmetheplace.showmetheplace.design.DtoAbstract;
 import com.showmetheplace.showmetheplace.design.EntityAbstract;
 import com.showmetheplace.showmetheplace.design.MapperAbstract;
 import com.showmetheplace.showmetheplace.dto.CustomerDto;
 import com.showmetheplace.showmetheplace.entity.Customer;
 
+@Component
 public class CustomerMapper implements MapperAbstract{
 
     @Override

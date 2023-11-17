@@ -1,12 +1,13 @@
 package com.showmetheplace.showmetheplace.design;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface Crud {
     
     DtoAbstract create(DtoAbstract dto);
-    DtoAbstract update(Long idEntity, DtoAbstract dto);
+    DtoAbstract update(DtoAbstract dto);
     boolean remove(Long idEntity);
-    List<DtoAbstract> getAll();    
+    Page<DtoAbstract> getAll(Pageable pageable);    
 
 }
