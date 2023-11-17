@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
-public abstract class Person {    
-    private String name;
-    private String email;
-    private String phone;
+public abstract class Person extends BaseEntity {    
+    protected String name;
+    protected String email;
+    protected String phone;
 }

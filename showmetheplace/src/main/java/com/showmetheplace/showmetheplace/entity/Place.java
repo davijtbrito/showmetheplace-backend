@@ -1,5 +1,7 @@
 package com.showmetheplace.showmetheplace.entity;
 
+import com.showmetheplace.showmetheplace.design.Location;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -11,9 +13,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "place")
-public class Place{
+public class Place extends BaseEntity implements Location{    
     
-    private Long id;
     private String country;
     private String city;
 }
