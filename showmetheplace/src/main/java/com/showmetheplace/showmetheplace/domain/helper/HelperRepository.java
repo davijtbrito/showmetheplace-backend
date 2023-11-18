@@ -1,8 +1,6 @@
-package com.showmetheplace.showmetheplace.repository;
+package com.showmetheplace.showmetheplace.domain.helper;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.showmetheplace.showmetheplace.entity.Helper;
 
 public interface HelperRepository extends JpaRepository<Helper, Long>{
     

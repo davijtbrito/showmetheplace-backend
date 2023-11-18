@@ -1,4 +1,4 @@
-package com.showmetheplace.showmetheplace.controller;
+package com.showmetheplace.showmetheplace.domain.customer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -11,10 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.showmetheplace.showmetheplace.controller.request.CreateCustomerRequest;
-import com.showmetheplace.showmetheplace.controller.request.UpdateCustomerRequest;
-import com.showmetheplace.showmetheplace.design.DtoAbstract;
-import com.showmetheplace.showmetheplace.service.CustomerService;
+import com.showmetheplace.showmetheplace.design.interfaces.Dto;
 
 @RestController
 @RequestMapping("/customer")
@@ -39,7 +36,7 @@ public class CustomerController {
     }
 
     @GetMapping("/findAll")
-    public Page<DtoAbstract> findAll(Pageable pageable){
+    public Page<Dto> findAll(Pageable pageable){
         return this.customerService.getAll(pageable);
     }
 }

@@ -1,8 +1,7 @@
-package com.showmetheplace.showmetheplace.controller.request;
+package com.showmetheplace.showmetheplace.domain.customer;
 
-import com.showmetheplace.showmetheplace.design.DtoAbstract;
-import com.showmetheplace.showmetheplace.design.RequestAbstract;
-import com.showmetheplace.showmetheplace.dto.CustomerDto;
+import com.showmetheplace.showmetheplace.design.interfaces.Dto;
+import com.showmetheplace.showmetheplace.design.interfaces.RequestDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateCustomerRequest implements RequestAbstract{
+public class UpdateCustomerRequest implements RequestDto{
     
     private Long id;
     private String name;
@@ -20,7 +19,7 @@ public class UpdateCustomerRequest implements RequestAbstract{
     private boolean allowTip;
 
     @Override
-    public DtoAbstract getDto() {
+    public Dto getDto() {
         
         CustomerDto dto = new CustomerDto();
         dto.setId(this.id);

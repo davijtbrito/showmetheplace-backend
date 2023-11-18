@@ -1,4 +1,6 @@
-package com.showmetheplace.showmetheplace.dto;
+package com.showmetheplace.showmetheplace.domain.helper;
+
+import com.showmetheplace.showmetheplace.design.abstracts.PersonDto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

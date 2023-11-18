@@ -1,4 +1,4 @@
-package com.showmetheplace.showmetheplace.service;
+package com.showmetheplace.showmetheplace.domain.customer;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -8,12 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.showmetheplace.showmetheplace.design.Crud;
-import com.showmetheplace.showmetheplace.design.DtoAbstract;
-import com.showmetheplace.showmetheplace.dto.CustomerDto;
-import com.showmetheplace.showmetheplace.entity.Customer;
-import com.showmetheplace.showmetheplace.mapper.CustomerMapper;
-import com.showmetheplace.showmetheplace.repository.CustomerRepository;
+import com.showmetheplace.showmetheplace.design.interfaces.Crud;
+import com.showmetheplace.showmetheplace.design.interfaces.Dto;
 
 @Service
 public class CustomerService implements Crud {
@@ -25,23 +21,23 @@ public class CustomerService implements Crud {
     private CustomerMapper customerMapper;
 
     @Override
-    public DtoAbstract create(DtoAbstract dto) {
+    public Dto create(Dto dto) {
         CustomerDto customerDto = (CustomerDto) dto;
 
-        Customer customer = this.customerRepository.save(new Customer(customerDto.getName(),
+        CustomerEntity customer = this.customerRepository.save(new CustomerEntity(customerDto.getName(),
                 customerDto.getEmail(), customerDto.getPhone(), customerDto.isAllowTip()));
 
         return customerMapper.entityToDto(customer);
     }
 
     @Override
-    public DtoAbstract update(DtoAbstract dto) {        
+    public Dto update(Dto dto) {        
 
         CustomerDto customerDto = (CustomerDto) dto;
 
-        Optional<Customer> customer = this.customerRepository.findById(customerDto.getId());
+        Optional<CustomerEntity> customer = this.customerRepository.findById(customerDto.getId());
 
-        this.customerRepository.save(new Customer(customerDto.getId(),
+        this.customerRepository.save(new CustomerEntity(customerDto.getId(),
                     customerDto.getName(),
                     customerDto.getEmail(),
                     customerDto.getPhone(),
@@ -55,10 +51,10 @@ public class CustomerService implements Crud {
 
     @Override
     public boolean remove(Long idEntity) {
-        Optional<Customer> customer = this.customerRepository.findById(idEntity);
+        Optional<CustomerEntity> customer = this.customerRepository.findById(idEntity);
 
         if (customer.isPresent()) {
-            this.customerRepository.save(new Customer(idEntity,
+            this.customerRepository.save(new CustomerEntity(idEntity,
                     customer.get().getName(),
                     customer.get().getEmail(),
                     customer.get().getPhone(),
@@ -75,9 +71,9 @@ public class CustomerService implements Crud {
     }
 
     @Override
-    public Page<DtoAbstract> getAll(Pageable pageable) {
+    public Page<Dto> getAll(Pageable pageable) {
 
-        Page<Customer> customerPage = this.customerRepository.findAll(pageable);
+        Page<CustomerEntity> customerPage = this.customerRepository.findAll(pageable);
 
         return customerPage.map(c -> {
             CustomerDto dto = new CustomerDto();

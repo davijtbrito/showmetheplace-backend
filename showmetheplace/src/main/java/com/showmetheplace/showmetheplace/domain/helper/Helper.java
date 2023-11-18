@@ -1,8 +1,9 @@
-package com.showmetheplace.showmetheplace.entity;
+package com.showmetheplace.showmetheplace.domain.helper;
 
 import java.time.LocalDateTime;
 
-import com.showmetheplace.showmetheplace.design.Location;
+import com.showmetheplace.showmetheplace.design.abstracts.Person;
+import com.showmetheplace.showmetheplace.design.interfaces.Location;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;

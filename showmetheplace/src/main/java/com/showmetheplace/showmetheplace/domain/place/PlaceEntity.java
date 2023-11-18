@@ -1,8 +1,9 @@
-package com.showmetheplace.showmetheplace.entity;
+package com.showmetheplace.showmetheplace.domain.place;
 
 import java.time.LocalDateTime;
 
-import com.showmetheplace.showmetheplace.design.Location;
+import com.showmetheplace.showmetheplace.design.abstracts.BaseEntity;
+import com.showmetheplace.showmetheplace.design.interfaces.Location;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -15,11 +16,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "place")
-public class Place extends BaseEntity implements Location{    
+public class PlaceEntity extends BaseEntity implements Location{    
     
     private String country;
     private String city;
-    public Place(Long id, Boolean active, LocalDateTime dateCreated, LocalDateTime dateUpdated, String country,
+    public PlaceEntity(Long id, Boolean active, LocalDateTime dateCreated, LocalDateTime dateUpdated, String country,
             String city) {                            
 
         this.country = country;

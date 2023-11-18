@@ -1,4 +1,4 @@
-package com.showmetheplace.showmetheplace.entity;
+package com.showmetheplace.showmetheplace.design.abstracts;
 
 import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
