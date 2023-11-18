@@ -16,13 +16,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "helper")
-public class Helper extends Person implements Location {
+public class HelperEntity extends Person implements Location {
 
     private boolean callAtNight;
     private String country;
     private String city;    
 
-    public Helper(String name, String email, String phone, boolean callAtNight, String country, String city) {        
+    public HelperEntity(String name, String email, String phone, boolean callAtNight, String country, String city) {        
         
         this.id = null;        
         this.active = true;

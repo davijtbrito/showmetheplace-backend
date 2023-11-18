@@ -12,7 +12,7 @@ public class HelperMapper implements EntityMapper{
     @Override
     public Dto entityToDto(EntityIdentification entity) {
 
-        Helper helper = (Helper) entity;
+        HelperEntity helper = (HelperEntity) entity;
         HelperDto dto = new HelperDto();
         dto.setId(helper.getId());        
         dto.setName(helper.getName());
