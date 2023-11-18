@@ -1,6 +1,6 @@
 package com.showmetheplace.showmetheplace.design.interfaces;
 
-public interface EntityId {
+public interface EntityIdentification {
 
     Long getId();
 }

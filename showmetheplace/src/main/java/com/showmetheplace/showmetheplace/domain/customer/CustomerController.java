@@ -21,12 +21,12 @@ public class CustomerController {
     private CustomerService customerService;
 
     @PostMapping("/create")    
-    public void create(@RequestBody CreateCustomerRequest request){
+    public void create(@RequestBody CustomerCreateRequest request){
         this.customerService.create(request.getDto());
     }
 
     @PostMapping("/update")    
-    public void update(@RequestBody UpdateCustomerRequest request){
+    public void update(@RequestBody CustomerUpdateRequest request){
         this.customerService.update(request.getDto());
     }
 

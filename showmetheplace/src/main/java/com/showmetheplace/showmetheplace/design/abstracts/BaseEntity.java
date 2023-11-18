@@ -2,7 +2,7 @@ package com.showmetheplace.showmetheplace.design.abstracts;
 
 import java.time.LocalDateTime;
 
-import com.showmetheplace.showmetheplace.design.interfaces.EntityId;
+import com.showmetheplace.showmetheplace.design.interfaces.EntityIdentification;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,7 +12,7 @@ import lombok.Getter;
 
 @Getter
 @MappedSuperclass
-public abstract class BaseEntity implements EntityId{
+public abstract class BaseEntity implements EntityIdentification{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -10,22 +10,24 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CreateCustomerRequest implements RequestDto {
-
+public class CustomerUpdateRequest implements RequestDto{
+    
+    private Long id;
     private String name;
     private String phone;
     private String email;
+    private boolean allowTip;
 
     @Override
     public Dto getDto() {
+        
         CustomerDto dto = new CustomerDto();
-        dto.setId(null);
+        dto.setId(this.id);
         dto.setName(this.name);
         dto.setPhone(this.phone);
         dto.setEmail(this.email);
-        dto.setAllowTip(false);
+        dto.setAllowTip(this.allowTip);
 
         return dto;
     }
-    
 }

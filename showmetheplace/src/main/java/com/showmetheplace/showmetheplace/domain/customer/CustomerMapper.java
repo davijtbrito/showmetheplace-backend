@@ -3,14 +3,14 @@ package com.showmetheplace.showmetheplace.domain.customer;
 import org.springframework.stereotype.Component;
 
 import com.showmetheplace.showmetheplace.design.interfaces.Dto;
-import com.showmetheplace.showmetheplace.design.interfaces.EntityId;
+import com.showmetheplace.showmetheplace.design.interfaces.EntityIdentification;
 import com.showmetheplace.showmetheplace.design.interfaces.EntityMapper;
 
 @Component
 public class CustomerMapper implements EntityMapper{
 
     @Override
-    public Dto entityToDto(EntityId entity) {
+    public Dto entityToDto(EntityIdentification entity) {
         
         CustomerDto dto = new CustomerDto();
         dto.setId(((CustomerEntity) entity).getId());
