@@ -7,13 +7,11 @@ import com.showmetheplace.showmetheplace.design.interfaces.Location;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "helper")
 public class HelperEntity extends Person implements Location {
@@ -33,4 +31,17 @@ public class HelperEntity extends Person implements Location {
         this.country = country;
         this.city = city;
     };        
+
+    public HelperEntity(Long id, String name, String email, String phone, String country, 
+        String city, boolean callAtNight, boolean isActive, LocalDateTime dateCreated, LocalDateTime dateUpdated) {        
+        
+        this.id = id;        
+        this.active = isActive;
+        this.dateCreated = dateCreated;
+        this.dateUpdated = dateUpdated;   
+
+        this.callAtNight = callAtNight;
+        this.country = country;
+        this.city = city;
+    };
 }
