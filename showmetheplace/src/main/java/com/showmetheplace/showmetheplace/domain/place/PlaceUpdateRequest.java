@@ -15,13 +15,15 @@ public class PlaceUpdateRequest implements RequestDto {
     private Long id;
     private String country;
     private String city;    
+    private String neighbourhood;
 
     @Override
     public Dto getDto() {
         PlaceDto dto = new PlaceDto();
         dto.setId(this.id);
         dto.setCountry(this.country);
-        dto.setCity(this.city);        
+        dto.setCity(this.city);    
+        dto.setNeighbourhood(this.neighbourhood);    
 
         return dto;
     }

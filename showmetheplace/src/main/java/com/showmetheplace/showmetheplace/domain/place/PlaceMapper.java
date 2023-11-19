@@ -14,8 +14,10 @@ public class PlaceMapper implements EntityMapper {
         
         PlaceEntity place = (PlaceEntity) entity;
         PlaceDto dto = new PlaceDto();
+        dto.setId(place.getId());
         dto.setCity(place.getCity());
         dto.setCountry(place.getCountry());
+        dto.setNeighbourhood(place.getNeighbourhood());
 
         return dto;
     }

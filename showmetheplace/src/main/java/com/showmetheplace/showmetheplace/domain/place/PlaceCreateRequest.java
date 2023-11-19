@@ -14,6 +14,7 @@ public class PlaceCreateRequest implements RequestDto{
 
     private String country;
     private String city;  
+    private String neighbourhood;
 
     @Override
     public Dto getDto() {
@@ -21,7 +22,8 @@ public class PlaceCreateRequest implements RequestDto{
         PlaceDto dto = new PlaceDto();
         dto.setId(null);
         dto.setCountry(this.country);
-        dto.setCity(this.city);        
+        dto.setCity(this.city);  
+        dto.setNeighbourhood(this.neighbourhood);      
 
         return dto;
     }

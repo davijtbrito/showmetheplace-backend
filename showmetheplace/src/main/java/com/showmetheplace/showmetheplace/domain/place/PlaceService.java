@@ -25,7 +25,7 @@ public class PlaceService implements Crud{
         PlaceDto placeDto = (PlaceDto) dto;
 
         PlaceEntity helper = this.placeRepository.save(new PlaceEntity(placeDto.getCountry(), 
-            placeDto.getCity()));
+            placeDto.getCity(), placeDto.getNeighbourhood()));
 
         return placeMapper.entityToDto(helper);
     }
@@ -40,7 +40,8 @@ public class PlaceService implements Crud{
         this.placeRepository.save(new PlaceEntity(
                     placeDto.getId(),
                     placeDto.getCountry(),
-                    placeDto.getCity(),                    
+                    placeDto.getCity(),
+                    placeDto.getNeighbourhood(),                    
                     place.get().isActive(),
                     place.get().getDateCreated(),
                     LocalDateTime.now()));
@@ -57,7 +58,8 @@ public class PlaceService implements Crud{
             this.placeRepository.save(new PlaceEntity(
                     idEntity,
                     place.get().getCountry(),
-                    place.get().getCity(),                                        
+                    place.get().getCity(),      
+                    place.get().getNeighbourhood(),                                  
                     false,
                     place.get().getDateCreated(),
                     LocalDateTime.now()));
@@ -74,13 +76,9 @@ public class PlaceService implements Crud{
         
         Page<PlaceEntity> placePage = this.placeRepository.findAll(pageable);
 
-        return placePage.map(p -> {
-            PlaceDto dto = new PlaceDto();
-            dto.setId(p.getId());
-            dto.setCountry(p.getCountry());
-            dto.setCity(p.getCity());
+        return placePage.map(p -> {            
 
-            return dto;
+            return (PlaceDto) this.placeMapper.entityToDto(p);
         });        
     }
     
