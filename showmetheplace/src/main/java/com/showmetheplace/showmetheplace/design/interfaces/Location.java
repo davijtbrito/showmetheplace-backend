@@ -1,4 +1,4 @@
-package com.showmetheplace.showmetheplace.design;
+package com.showmetheplace.showmetheplace.design.interfaces;
 
 public interface Location {
     
