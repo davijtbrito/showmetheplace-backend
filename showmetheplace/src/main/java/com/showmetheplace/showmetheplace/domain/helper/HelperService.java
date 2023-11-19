@@ -79,7 +79,7 @@ public class HelperService implements Crud {
 
     @Override
     public Page<Dto> getAll(Pageable pageable) {
-         Page<HelperEntity> helperPage = this.helperRepository.findAll(pageable);
+        Page<HelperEntity> helperPage = this.helperRepository.findAll(pageable);
 
         return helperPage.map(h -> {
             HelperDto dto = new HelperDto();
