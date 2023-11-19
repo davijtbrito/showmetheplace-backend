@@ -23,12 +23,11 @@ public class HelperService implements Crud {
     @Override
     public Dto create(Dto dto) {
         HelperDto helperDto = (HelperDto) dto;
-
-        HelperEntity helper = this.helperRepository.save(new HelperEntity(helperDto.getName(),
+        HelperEntity helper = new HelperEntity(helperDto.getName(),
                 helperDto.getEmail(), helperDto.getPhone(), helperDto.isCallAtNight(), 
-                helperDto.getCountry(), helperDto.getCity()));
+                helperDto.getCountry(), helperDto.getCity());        
 
-        return helperMapper.entityToDto(helper);
+        return helperMapper.entityToDto(this.helperRepository.save(helper));
     }
 
     @Override
