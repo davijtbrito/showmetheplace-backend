@@ -24,6 +24,9 @@ public class ScheduleEntity extends BaseEntity {
     @OneToOne
     private HelperEntity helper;
 
+    /**
+     * Date that were shceduled by the customer and accepted by the helper.
+     */
     private LocalDateTime dateSchedule;
 
     public ScheduleEntity(CustomerEntity customer, HelperEntity helper, LocalDateTime date_schedule) {

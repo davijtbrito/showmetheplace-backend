@@ -15,28 +15,28 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "request")
+@Table(name = "call")
 public class CallEntity extends BaseEntity{
     
     @OneToOne
-    private CustomerEntity customerEntity;
+    private CustomerEntity customer;
 
     @OneToOne
-    private PlaceEntity placeEntity;
+    private PlaceEntity place;
 
-    public CallEntity(CustomerEntity customerEntity, PlaceEntity placeEntity) {
+    public CallEntity(CustomerEntity customer, PlaceEntity place) {
         this.id = null;
-        this.customerEntity = customerEntity;
-        this.placeEntity = placeEntity;        
+        this.customer = customer;
+        this.place = place;        
         this.active = true;
         this.dateCreated = LocalDateTime.now();
         this.dateUpdated = LocalDateTime.now();
     }    
 
-    public CallEntity(Long id, CustomerEntity customerEntity, PlaceEntity placeEntity, boolean isActive, LocalDateTime dateCreated, LocalDateTime dateUpdated) {
+    public CallEntity(Long id, CustomerEntity customer, PlaceEntity place, boolean isActive, LocalDateTime dateCreated, LocalDateTime dateUpdated) {
         this.id = id;
-        this.customerEntity = customerEntity;
-        this.placeEntity = placeEntity;        
+        this.customer = customer;
+        this.place = place;        
         this.active = isActive;
         this.dateCreated = dateCreated;
         this.dateUpdated = dateUpdated;

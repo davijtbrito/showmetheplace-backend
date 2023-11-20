@@ -27,10 +27,10 @@ public class CallService {
     @Autowired
     private CallMapper callMapper;
 
-    public Dto call(CallDto callDto){
+    public Dto call(Dto callDto){
         
-        Optional<CustomerEntity> cusOptional = this.customerRepository.findById(callDto.getCustomer().getId());
-        Optional<PlaceEntity> placeOptional = this.placeRepository.findById(callDto.getPlace().getId());
+        Optional<CustomerEntity> cusOptional = this.customerRepository.findById(((CallDto) callDto).getCustomer().getId());
+        Optional<PlaceEntity> placeOptional = this.placeRepository.findById(((CallDto) callDto).getPlace().getId());
 
         if (cusOptional.isPresent() && placeOptional.isPresent()){
             
@@ -51,8 +51,8 @@ public class CallService {
         
         if (optional.isPresent()){
             return this.callMapper.entityToDto(this.callRepository.save(new CallEntity(id, 
-            optional.get().getCustomerEntity(), 
-            optional.get().getPlaceEntity(), 
+            optional.get().getCustomer(), 
+            optional.get().getPlace(), 
             false, 
             optional.get().getDateCreated(), 
             LocalDateTime.now())));

@@ -26,8 +26,8 @@ public class CallMapper implements EntityMapper{
         CallEntity callEntity = (CallEntity) entity;
         CallDto callDto = new CallDto();
         callDto.setId(callEntity.getId());
-        callDto.setCustomer((CustomerDto) customerMapper.entityToDto(callEntity.getCustomerEntity()));
-        callDto.setPlace((PlaceDto) placeMapper.entityToDto(callEntity.getPlaceEntity()));        
+        callDto.setCustomer((CustomerDto) customerMapper.entityToDto(callEntity.getCustomer()));
+        callDto.setPlace((PlaceDto) placeMapper.entityToDto(callEntity.getPlace()));        
 
         return callDto;
     }
