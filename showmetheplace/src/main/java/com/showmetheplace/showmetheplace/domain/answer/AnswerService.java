@@ -26,10 +26,10 @@ public class AnswerService {
     @Autowired
     private AnswerMapper answerMapper;
 
-    public Dto answerCall(AnswerDto answerDto){
+    public Dto answerCall(Long callId, Long helperId){
         
-        Optional<CallEntity> optionalCall = this.callRepository.findById(answerDto.getCall().getId());
-        Optional<HelperEntity> optionalHelper = this.helperRepository.findById(answerDto.getHelper().getId()) ;
+        Optional<CallEntity> optionalCall = this.callRepository.findById(callId);
+        Optional<HelperEntity> optionalHelper = this.helperRepository.findById(helperId) ;
 
         if (optionalCall.isPresent() && optionalHelper.isPresent()) {
             return this.answerMapper.entityToDto(this.answerRepository.save(new AnswerEntity(optionalCall.get(), optionalHelper.get())));
