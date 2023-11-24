@@ -20,6 +20,6 @@ public class CallController {
     @PostMapping("/makeCall")
     @ResponseStatus(HttpStatus.CREATED)
     public Dto makeCall(@RequestBody CallCreateRequest request){
-        return this.callService.call(request.getDto());
+        return this.callService.call(request.getCustomerId(), request.getPlaceId());
     }
 }

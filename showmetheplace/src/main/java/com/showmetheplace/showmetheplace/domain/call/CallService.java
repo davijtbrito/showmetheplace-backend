@@ -27,10 +27,10 @@ public class CallService {
     @Autowired
     private CallMapper callMapper;
 
-    public Dto call(Dto callDto){
+    public Dto call(Long customerId, Long placeid){
         
-        Optional<CustomerEntity> cusOptional = this.customerRepository.findById(((CallDto) callDto).getCustomer().getId());
-        Optional<PlaceEntity> placeOptional = this.placeRepository.findById(((CallDto) callDto).getPlace().getId());
+        Optional<CustomerEntity> cusOptional = this.customerRepository.findById(customerId);
+        Optional<PlaceEntity> placeOptional = this.placeRepository.findById(placeid);
 
         if (cusOptional.isPresent() && placeOptional.isPresent()){
             
