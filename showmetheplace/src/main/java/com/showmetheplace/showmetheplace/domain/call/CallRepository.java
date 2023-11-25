@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface CallRepository extends JpaRepository<CallEntity, Long>{
     
-    @Query("SELECT c FROM CallEntity c WHERE c.customer.id = :customerId AND c.active = false")
+    @Query("SELECT c FROM CallEntity c WHERE c.customer.id = :customerId AND c.active = true")
     CallEntity findByCustomerId(Long customerId);
+
 }

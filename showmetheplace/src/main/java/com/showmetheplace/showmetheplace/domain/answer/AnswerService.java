@@ -37,4 +37,8 @@ public class AnswerService {
         
         return null;
     }
+
+    public Dto findByHelperId(Long helperId){
+        return this.answerMapper.entityToDto(this.answerRepository.findByHelperId(helperId));
+    }
 }
