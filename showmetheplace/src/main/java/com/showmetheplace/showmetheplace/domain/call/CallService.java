@@ -1,6 +1,8 @@
 package com.showmetheplace.showmetheplace.domain.call;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +45,17 @@ public class CallService {
     public Dto findByCustomer(Long idCustomer){
 
         return this.callMapper.entityToDto(this.callRepository.findByCustomerId(idCustomer));
+    }
+
+    public List<Dto> findByPlace(Long placeId){
+
+        List<Dto> calls = new ArrayList<>();
+
+        this.callRepository.findAllByPlaceId(placeId).stream().forEach(c -> {
+            calls.add(this.callMapper.entityToDto(c));
+        });
+
+        return calls;
     }
 
     public Dto closeCall(Long id){
