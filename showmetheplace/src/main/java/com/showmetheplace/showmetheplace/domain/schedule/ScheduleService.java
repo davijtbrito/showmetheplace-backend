@@ -1,5 +1,6 @@
 package com.showmetheplace.showmetheplace.domain.schedule;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,16 +27,16 @@ public class ScheduleService {
     @Autowired
     private ScheduleMapper scheduleMapper;
 
-    public Dto addSchedule(ScheduleDto dto){
+    public Dto addSchedule(Long customerId, Long helperId, LocalDateTime scheduleDate){
 
-        Optional<CustomerEntity> customerEntity = customerRepository.findById(dto.getCustomer().getId());
-        Optional<HelperEntity> helperEntity = helperRepository.findById(dto.getHelper().getId());
+        Optional<CustomerEntity> customerEntity = customerRepository.findById(customerId);
+        Optional<HelperEntity> helperEntity = helperRepository.findById(helperId);
 
         if (helperEntity.isPresent() && customerEntity.isPresent()){
             ScheduleEntity scheduleEntity = new ScheduleEntity(
                 customerEntity.get(),
                 helperEntity.get(),
-                dto.getDateSchedule());                            
+                scheduleDate);
 
             return scheduleMapper.entityToDto(scheduleRepository.save(scheduleEntity));
         }
