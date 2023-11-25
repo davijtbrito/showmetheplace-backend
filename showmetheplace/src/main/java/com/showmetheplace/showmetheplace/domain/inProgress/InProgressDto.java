@@ -1,9 +1,8 @@
-package com.showmetheplace.showmetheplace.domain.schedule;
+package com.showmetheplace.showmetheplace.domain.inProgress;
 
-import java.time.LocalDateTime;
 
 import com.showmetheplace.showmetheplace.design.interfaces.Dto;
-import com.showmetheplace.showmetheplace.domain.customer.CustomerDto;
+import com.showmetheplace.showmetheplace.domain.call.CallDto;
 import com.showmetheplace.showmetheplace.domain.helper.HelperDto;
 
 import lombok.Getter;
@@ -13,10 +12,9 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class ScheduleDto implements Dto{
+public class InProgressDto implements Dto{
 
     private Long id;
-    private CustomerDto customer;    
+    private CallDto call;    
     private HelperDto helper;
-    private LocalDateTime dateSchedule;    
 }
