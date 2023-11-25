@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
-@Table(name = "schedule")
+@Table(name = "inProgress")
 public class InProgressEntity extends BaseEntity {
     
     @OneToOne

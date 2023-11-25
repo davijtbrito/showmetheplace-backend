@@ -24,13 +24,13 @@ public class InProgressMapper implements EntityMapper{
     public Dto entityToDto(EntityIdentification entity) {
 
         InProgressEntity inProgressEntity = (InProgressEntity) entity;
-        InProgressDto scheduleDto = new InProgressDto();
+        InProgressDto inProgressDto = new InProgressDto();
 
-        scheduleDto.setId(inProgressEntity.getId());
-        scheduleDto.setCall((CallDto) callMapper.entityToDto(inProgressEntity.getCall()));
-        scheduleDto.setHelper((HelperDto) helperMapper.entityToDto(inProgressEntity.getHelper()));                
+        inProgressDto.setId(inProgressEntity.getId());
+        inProgressDto.setCall((CallDto) callMapper.entityToDto(inProgressEntity.getCall()));
+        inProgressDto.setHelper((HelperDto) helperMapper.entityToDto(inProgressEntity.getHelper()));                
 
-        return scheduleDto;
+        return inProgressDto;
     }
     
 }

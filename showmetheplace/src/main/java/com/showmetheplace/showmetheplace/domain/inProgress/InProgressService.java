@@ -28,7 +28,7 @@ public class InProgressService implements CloseOperation{
     private InProgressRepository inProgressRepository;
 
     @Autowired
-    private InProgressMapper scheduleMapper;
+    private InProgressMapper inProgressMapper;
 
     public Dto add(Long callId, Long helperId){
 
@@ -36,11 +36,11 @@ public class InProgressService implements CloseOperation{
         Optional<HelperEntity> helperEntity = helperRepository.findById(helperId);
 
         if (helperEntity.isPresent() && callOptional.isPresent()){
-            InProgressEntity scheduleEntity = new InProgressEntity(
+            InProgressEntity inProgress = new InProgressEntity(
                 callOptional.get(),
                 helperEntity.get());
 
-            return scheduleMapper.entityToDto(inProgressRepository.save(scheduleEntity));
+            return inProgressMapper.entityToDto(inProgressRepository.save(inProgress));
         }
 
         return null;                
@@ -58,7 +58,7 @@ public class InProgressService implements CloseOperation{
             Optional<HelperEntity> helperEntity = helperRepository.findById(optionalInProgress.get().getHelper().getId());
 
             if (helperEntity.isPresent() && callOptional.isPresent()){
-                InProgressEntity scheduleEntity = new InProgressEntity(
+                InProgressEntity inProgress = new InProgressEntity(
                     optionalInProgress.get().getId(),
                     callOptional.get(),
                     helperEntity.get(),
@@ -66,7 +66,7 @@ public class InProgressService implements CloseOperation{
                     optionalInProgress.get().getDateCreated(),
                     LocalDateTime.now());
 
-                inProgressRepository.save(scheduleEntity);
+                inProgressRepository.save(inProgress);
 
                 //TODO close  Call and answer
             }
