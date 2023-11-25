@@ -33,6 +33,7 @@ public class ScheduleEntity extends BaseEntity {
         this.id = null;        
         this.customer = customer;
         this.helper = helper;
+        this.active = true;
         this.dateSchedule = date_schedule;
         this.dateCreated = LocalDateTime.now();
         this.dateUpdated = LocalDateTime.now();
